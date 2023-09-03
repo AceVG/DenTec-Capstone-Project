@@ -5,19 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/homepageCSS.css') }}">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <div class="dentec">
         <p>DenTec</p>
     </div>
 
-    <ul class="links">
-        <li><a href="default.asp">Home</a></li>
-        <li><a href="news.asp">Services</a></li>
-        <li><a href="contact.asp">Messages</a></li>
-        <li><a href="about.asp">Blog</a></li>
-      </ul>
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="default.asp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="news.asp">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.asp">Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.asp">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
       <div class="container">
       <img src="{{ asset('images/dentalgirl.jpg') }}" id="home" alt="home page">
