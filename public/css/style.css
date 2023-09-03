@@ -1,0 +1,101 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Header styles */
+.dentec {
+    background-color: #03D6C5;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+}
+
+/* Navigation styles */
+.links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #fff;
+}
+
+.links li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Container styles */
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Home section styles */
+#home {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    opacity: 0.8;
+}
+
+#text {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+#but1 {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* About section styles */
+.about {
+    color: #048383;
+    margin-top: 50px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.abouttxt {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#aboutimg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+
+/* Contact section styles */
+.contact1 {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 80px;
+    font-weight: bold;
+}
+
+#but2 {
+    background-color: #fff;
+    color: #000;
+    padding: 10px 24px;
+    font-weight: bold;
+}
