@@ -14,6 +14,11 @@
     <header>
         <div class="dentec">
             <p>DenTec</p>
+            <div class="dentec-auth">
+                <a href="/login">Login</a>
+                <hr />
+                <a href="/register">Register</a>
+            </div>
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
@@ -23,7 +28,7 @@
             <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="homepage">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="services">Services</a>
