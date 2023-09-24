@@ -18,9 +18,21 @@ Route::get('/', function () {
     return view('homepage');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
 Route::get('/services', function () {
     return view('services');
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/appointment', function () {
+    return view('appointment');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
