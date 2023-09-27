@@ -49,7 +49,7 @@
                 <a href="services" class="{{ (request()->is('services*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}">Services</a>
                 <a href="contact" class="{{ (request()->is('contact*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}">Contact</a>
             </div>
-            <a href="appointment" class="btn btn-primary py-2 px-4 ms-3">Appointment {{request()->is('contact*')}}</a>
+            <a href="appointment" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
         </div>
     </nav>
     <!-- Navbar End -->
