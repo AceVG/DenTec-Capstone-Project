@@ -1,0 +1,11 @@
+php artisan make:controller AdminController
+php artisan make:model Appointment -m
+
+https://www.iankumu.com/blog/laravel-many-to-many-relationship/
+
+
+https://pusher.com
+
+https://chatify.munafio.com/installation
+https://www.youtube.com/watch?v=WTfDDy_-doA
+https://www.youtube.com/watch?v=-lyI5nstcec&list=PLm8sgxwSZofd4oJ9fqAtHaIxRRc5idUnd&index=1&ab_channel=WebTechKnowledge

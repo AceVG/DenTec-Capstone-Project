@@ -50,30 +50,31 @@
                 <a href="contact" class="{{ (request()->is('contact*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}">Contact</a>
             </div>
             <a href="appointment" class="btn btn-primary py-2 px-4 ms-3">Appointment</a>
+            @auth
+                <div class="dropdown">
+                    <button class="btn btn-secondary py-2 px-4 ms-3 dropdown-toggle" data-bs-toggle="dropdown">
+                        {{ Auth::user()->name }}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="{{route('profile.edit')}}">{{ __('Profile') }}</a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <button class="dropdown-item" type="submit">
+                                {{ __('Log Out') }}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            @endauth
         </div>
     </nav>
     <!-- Navbar End -->
     
     @yield('content')
-
-    <!-- Newsletter Start -->
-    <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
-        <div class="container">
-            <div class="bg-primary p-5">
-                <form class="mx-auto" style="max-width: 600px;">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                        <button class="btn btn-dark px-4">Sign Up</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter End -->
     
-
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
+    <div class="container-fluid bg-dark text-light py-5 mt-0 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
         <div class="container pt-5">
             <div class="row g-5 pt-4">
                 <div class="col-9">
@@ -104,5 +105,18 @@
         </div>
     </div>
     <!-- Footer End -->
+
+    @auth
+    <div class="chat-accordion accordion shadow-lg">
+        <div class="accordion-item">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <i class="fa fa-message"></i>
+            </button>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <iframe src="{{ url('chatify/1?source=iframe') }}" style="height: 400px;" />
+            </div>
+        </div>
+    </div>
+    @endauth
 </body>
 </html>
