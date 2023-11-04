@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('email');
-            $table->string('notes');
+            $table->string('notes')->nullable();
             $table->dateTime('start');
             $table->dateTime('end');
             $table->string('status')->nullable();

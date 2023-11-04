@@ -29,7 +29,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <label for="name">Name</label>
-                                            <input class="form-control" type="text" id="name" name="name" />
+                                            <input class="form-control" type="text" id="name" name="name" required />
                                             <x-input-error :messages="$errors->get('name')" class="text-error mt-2" />
 
                                             <label class="mt-2" for="phone">Phone</label>
@@ -78,7 +78,7 @@
                                                     <input type="hidden" name="id" value="{{$dentist->id}}" />
 
                                                     <label for="name">Name</label>
-                                                    <input class="form-control" type="text" id="name" name="name" value="{{$dentist->name}}" />
+                                                    <input class="form-control" type="text" id="name" name="name" value="{{$dentist->name}}" required />
                                                     <x-input-error :messages="$errors->get('name')" class="text-error mt-2" />
 
                                                     <label class="mt-2" for="phone">Phone</label>

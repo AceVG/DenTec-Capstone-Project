@@ -19,7 +19,7 @@
                             </button>
                             <div class="modal fade" id="create" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
-                                    <form class="modal-content" method="POST" action="{{ url('service') }}">
+                                    <form class="modal-content" method="POST" action="{{ url('service') }}" enctype="multipart/form-data">
                                         @csrf
 
                                         <div class="modal-header">
@@ -28,12 +28,18 @@
                                         </div>
                                         <div class="modal-body">
                                             <label for="name">Name</label>
-                                            <input class="form-control" type="text" id="name" name="name" />
+                                            <input class="form-control" type="text" id="name" name="name" required />
                                             <x-input-error :messages="$errors->get('name')" class="text-error mt-2" />
 
                                             <label class="mt-2" for="duration">Duration (hours)</label>
-                                                    <input class="form-control" type="number" id="duration" name="duration" />
-                                                    <x-input-error :messages="$errors->get('duration')" class="text-error mt-2" />
+                                            <input class="form-control" type="number" id="duration" name="duration" required />
+                                            <x-input-error :messages="$errors->get('duration')" class="text-error mt-2" />
+
+                                            <div class="mt-3">
+                                                <label for="photo" class="form-label">Photo</label>
+                                                <input class="form-control" type="file" accept="image/*" name="file" id="photo">
+                                                <x-input-error :messages="$errors->get('photo')" class="text-error mt-2" />
+                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
@@ -61,7 +67,7 @@
 
                                     <div class="modal fade" id="edit{{$service->id}}" tabindex="-1" aria-hidden="true">
                                         <div class="modal-dialog">
-                                            <form class="modal-content" method="POST" action="{{ url('service/update') }}">
+                                            <form class="modal-content" method="POST" action="{{ url('service/update') }}" enctype="multipart/form-data">
                                                 @csrf
 
                                                 <div class="modal-header">
@@ -72,12 +78,18 @@
                                                     <input type="hidden" name="id" value="{{$service->id}}" />
 
                                                     <label for="name">Name</label>
-                                                    <input class="form-control" type="text" id="name" name="name" value="{{$service->name}}" />
+                                                    <input class="form-control" type="text" id="name" name="name" value="{{$service->name}}" required />
                                                     <x-input-error :messages="$errors->get('name')" class="text-error mt-2" />
 
                                                     <label class="mt-2" for="duration">Duration (hours)</label>
-                                                    <input class="form-control" type="number" id="duration" name="duration" value="{{$service->duration}}" />
+                                                    <input class="form-control" type="number" id="duration" name="duration" value="{{$service->duration}}" required />
                                                     <x-input-error :messages="$errors->get('duration')" class="text-error mt-2" />
+
+                                                    <div class="mt-3">
+                                                        <label for="photo" class="form-label">Photo</label>
+                                                        <input class="form-control" type="file" accept="image/*" name="file" id="photo">
+                                                        <x-input-error :messages="$errors->get('photo')" class="text-error mt-2" />
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Review;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -15,21 +17,25 @@ class AppointmentController extends Controller
         $appointments = Appointment::where('user_id', Auth::id())->orderby('start', 'desc')->get();
         $services = Service::all();
 
-        return view('public.appointment', compact('appointments', 'services'));
+        $appointmentIds = $appointments->pluck('id')->toArray();
+        $reviews = Review::whereIn('appointment_id', $appointmentIds)->get();
+
+        return view('public.appointment', compact('appointments', 'services', 'reviews'));
     }
 
     public function create(Request $request)
     {
+        $user = User::find($request->user_id == null ? Auth::id() : $request->user_id);
         $service = Service::find($request->service_id);
         $appointment = Appointment::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
+            'name' => $request->name == null ? $user->name : $request->name,
+            'email' => $request->email == null ? $user->email : $request->email,
+            'phone' => $request->phone == null ? $user->phone : $request->phone,
             'notes' => $request->notes,
             'start' => $request->start,
             'end' => Carbon::parse($request->start)->addHours($service->duration),
-            'status' => 'Pending',
-            'user_id' => Auth::id(),
+            'status' => $request->status == null ? 'Pending' : $request->status,
+            'user_id' => $request->user_id == null ? Auth::id() : $request->user_id,
             'service_id' => $request->service_id,
         ]);
 

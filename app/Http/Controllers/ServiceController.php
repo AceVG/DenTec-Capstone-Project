@@ -10,9 +10,20 @@ class ServiceController extends Controller
 {
     public function create(Request $request)
     {
+        $photo = $request->file;
+
+        $photoname = $photo != null ? time() . '.' . $photo->getClientOriginalExtension() : null;
+        
+        if ($photo != null)
+        {
+            $photoname = time() . '.' . $photo->getClientOriginalExtension();
+            $photo->move('services-images', $photoname);
+        }
+
         $service = Service::create([
             'name' => $request->name,
             'duration' => $request->duration,
+            'photo' => 'services-images/' . $photoname,
         ]);
 
         return redirect()->back()->with('message', 'Service created successfully');
@@ -24,6 +35,14 @@ class ServiceController extends Controller
  
         $service->name = $request->name;
         $service->duration = $request->duration;
+
+        $photo = $request->file;
+        if ($photo != null)
+        {
+            $photoname = time() . '.' . $photo->getClientOriginalExtension();
+            $photo->move('services-images', $photoname);
+            $service->photo = 'services-images/' . $photoname;
+        }
         
         $service->save();
 

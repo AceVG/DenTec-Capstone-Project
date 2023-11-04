@@ -13,6 +13,7 @@ class Service extends Model
     protected $fillable = [
         'name',
         'duration',
+        'photo',
     ];
 
     public function dentists()

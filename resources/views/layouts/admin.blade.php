@@ -25,6 +25,8 @@
                     <a href="/admin" class="{{ (request()->is('admin') || request()->is('admin/appointments*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}"><i class="fa fa-th me-2"></i>Appointments</a>
                     <a href="/admin/dentists" class="{{ (request()->is('admin/dentists*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}"><i class="fa fa-tooth me-2"></i>Dentists</a>
                     <a href="/admin/services" class="{{ (request()->is('admin/services*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}"><i class="fa fa-list-check me-2"></i>Services</a>
+                    <a href="/admin/users" class="{{ (request()->is('admin/users*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}"><i class="fa fa-user me-2"></i>Users</a>
+                    <a href="/admin/reviews" class="{{ (request()->is('admin/reviews*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}"><i class="fa fa-star me-2"></i>Reviews</a>
                     <a href="/admin/messages" class="{{ (request()->is('admin/messages*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}"><i class="fa fa-message me-2"></i>Messages</a>
                 </div>
             </nav>

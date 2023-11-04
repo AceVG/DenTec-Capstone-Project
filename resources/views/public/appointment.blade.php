@@ -131,6 +131,45 @@
                                                 Cancel
                                             </button>
                                         </form>
+                                        @elseif ($appointment->status == 'Completed')
+                                            <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#review{{$appointment->id}}">
+                                                Review
+                                            </button>
+                                            <div class="modal fade" id="review{{$appointment->id}}" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <form class="modal-content" method="POST" action="{{ url($reviews->where('appointment_id', $appointment->id)->first() == null ? 'review' : 'review/update') }}">
+                                                        @csrf
+
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Create</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <input type="hidden" name="id" value="{{$reviews->where('appointment_id', $appointment->id)->first()?->id}}" />
+                                                            <input type="hidden" name="appointment_id" value="{{$appointment->id}}" />
+
+                                                            <label for="rating">Rating</label>
+                                                            <div class="star-cb-group">
+                                                                <input type="radio" id="rating-{{$appointment->id + 5}}" name="rating" value="5" required {{$reviews->where('appointment_id', $appointment->id)->first()?->rating == 5 ? 'checked' : null}} /><label for="rating-{{$appointment->id + 5}}">5</label>
+                                                                <input type="radio" id="rating-{{$appointment->id + 4}}" name="rating" value="4" required {{$reviews->where('appointment_id', $appointment->id)->first()?->rating == 4 ? 'checked' : null}} /><label for="rating-{{$appointment->id + 4}}">4</label>
+                                                                <input type="radio" id="rating-{{$appointment->id + 3}}" name="rating" value="3" required {{$reviews->where('appointment_id', $appointment->id)->first()?->rating == 3 ? 'checked' : null}} /><label for="rating-{{$appointment->id + 3}}">3</label>
+                                                                <input type="radio" id="rating-{{$appointment->id + 2}}" name="rating" value="2" required {{$reviews->where('appointment_id', $appointment->id)->first()?->rating == 2 ? 'checked' : null}} /><label for="rating-{{$appointment->id + 2}}">2</label>
+                                                                <input type="radio" id="rating-{{$appointment->id + 1}}" name="rating" value="1" required {{$reviews->where('appointment_id', $appointment->id)->first()?->rating == 1 ? 'checked' : null}} /><label for="rating-{{$appointment->id + 1}}">1</label>
+                                                                <input type="radio" name="rating" value="0" class="star-cb-clear" /><label for="rating-0">0</label>
+                                                            </div>
+                                                            <x-input-error :messages="$errors->get('rating')" class="text-error mt-2" />
+
+                                                            <label class="mt-2" for="review">Review</label>
+                                                            <textarea class="form-control" type="text" id="review" name="review" rows="3" required>{{$reviews->where('appointment_id', $appointment->id)->first()?->review}}</textarea>
+                                                            <x-input-error :messages="$errors->get('review')" class="text-error mt-2" />
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-success">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         @endif
                                     </td>
                                 </tr>

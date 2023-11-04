@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->double('duration');
+            $table->string('photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

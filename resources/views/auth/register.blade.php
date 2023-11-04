@@ -23,6 +23,27 @@
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
+        <!-- Birthdate -->
+        <div class="mt-4">
+            <x-input-label for="birthdate" :value="__('Birthdate')" />
+            <x-text-input id="birthdate" class="block mt-1 w-full" type="date" name="birthdate" :value="old('birthdate')" required />
+            <x-input-error :messages="$errors->get('birthdate')" class="mt-2" />
+        </div>
+
+        <!-- Sex -->
+        <div class="mt-4">
+            <x-input-label :value="__('Sex')" />
+            <div class="flex items-center my-1">
+                <input checked id="default-radio-1" type="radio" value="true" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Male</label>
+            </div>
+            <div class="flex items-center">
+                <input id="default-radio-2" type="radio" value="false" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Female</label>
+            </div>
+            <x-input-error :messages="$errors->get('sex')" class="mt-2" />
+        </div>
+
         <!-- Address -->
         <div class="mt-4">
             <x-input-label for="address" :value="__('Address')" />
