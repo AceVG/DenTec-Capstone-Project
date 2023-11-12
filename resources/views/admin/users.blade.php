@@ -17,6 +17,9 @@
                         <th scope="col">Birthdate</th>
                         <th scope="col">Sex</th>
                         <th scope="col">Address</th>
+                        <th scope="col">Dental History</th>
+                        <th scope="col">Medical History</th>
+                        <th scope="col">Remarks</th>
                         <th scope="col">
                             <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#create">
                                 Create
@@ -104,6 +107,9 @@
                             <td>{{$user->birthdate}}</td>
                             <td>{{$user->sex == true ? 'Male' : 'Female'}}</td>
                             <td>{{$user->address}}</td>
+                            <td>{{$user->dental_history}}</td>
+                            <td>{{$user->medical_history}}</td>
+                            <td>{{$user->remarks}}</td>
                             <td>
                                 <div class="d-flex align-center gap-2">
                                     <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit{{$user->id}}">

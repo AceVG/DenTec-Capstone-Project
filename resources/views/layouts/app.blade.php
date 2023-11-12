@@ -113,7 +113,8 @@
                 <i class="fa fa-message"></i>
             </button>
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <iframe src="{{ url('chatify/1?source=iframe') }}" style="height: 400px;" />
+                <span class="d-none">{{$adminUser = App\Models\User::where('user_type', '1')->first()}}</div>
+                <iframe src="{{ url('chatify/' . $adminUser?->id . '?source=iframe') }}" style="height: 400px;" />
             </div>
         </div>
     </div>
