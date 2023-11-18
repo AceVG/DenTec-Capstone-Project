@@ -54,15 +54,15 @@
                         <h3 class="text-white mb-3">Opening Hours</h3>
                         <div class="d-flex justify-content-between text-white mb-3">
                             <h6 class="text-white mb-0">Mon - Fri</h6>
-                            <p class="mb-0"> 8:00am - 9:00pm</p>
+                            <p class="mb-0"> 9:00am - 4:00pm</p>
                         </div>
                         <div class="d-flex justify-content-between text-white mb-3">
                             <h6 class="text-white mb-0">Saturday</h6>
-                            <p class="mb-0"> 8:00am - 7:00pm</p>
+                            <p class="mb-0"> 9:00am - 5:00pm</p>
                         </div>
                         <div class="d-flex justify-content-between text-white mb-3">
                             <h6 class="text-white mb-0">Sunday</h6>
-                            <p class="mb-0"> 8:00am - 5:00pm</p>
+                            <p class="mb-0"> 9:00am - 3:00pm</p>
                         </div>
                         <a class="btn btn-light" href="appointment">Appointment</a>
                     </div>
@@ -71,7 +71,9 @@
                     <div class="bg-secondary d-flex flex-column p-5" style="height: 300px;">
                         <h3 class="text-white mb-3">Make Appointment</h3>
                         <p class="text-white">Book your dental appointment today for a healthier smile tomorrow.</p>
-                        <h2 class="text-white mb-0">+639123456789</h2>
+                        <h2 class="text-white mb-0">0933-811-1429</h2>
+                        <h2 class="text-white mb-0">0917-186-6575</h2>
+                        <h2 class="text-white mb-0">(042) 660 4906</h2>
                     </div>
                 </div>
             </div>
@@ -137,7 +139,9 @@
                             <div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-4">
                                 <h3 class="text-white mb-3">Make Appointment</h3>
                                 <p class="text-white mb-3">Book your dental appointment today for a healthier smile tomorrow.</p>
-                                <h2 class="text-white mb-0">+639123456789</h2>
+                                <h2 class="text-white mb-0">0933-811-1429</h2>
+                                <h2 class="text-white mb-0">0917-186-6575</h2>
+                                <h2 class="text-white mb-0">(042) 660 4906</h2>
                             </div>
                         </div>
                     </div>
@@ -176,31 +180,16 @@
                             <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
                             <div class="text-start">
                                 <h5 class="mb-0">Call Us</h5>
-                                <span>+6391234567890</span>
+                                <span>0933-811-1429, 0917-186-6575, (042) 660 4906</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 wow slideInUp" data-wow-delay="0.3s">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-12">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Your Name" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <input type="email" class="form-control border-0 bg-light px-4" placeholder="Your Email" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Subject" style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <textarea class="form-control border-0 bg-light px-4 py-3" rows="5" placeholder="Message"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
+                    <span class="d-none">{{$adminUser = App\Models\User::where('user_type', '1')->first()}}</span>
+                    <iframe src="{{ url('chatify/' . $adminUser?->id . '?source=iframe') }}" 
+                            frameborder="0" style="width: 100%; height: 100%;" allowfullscreen="" aria-hidden="false"
+                            tabindex="0"></iframe>
                 </div>
                 <div class="col-xl-4 col-lg-12 wow slideInUp" data-wow-delay="0.6s">
                     <iframe class="position-relative rounded w-100 h-100"

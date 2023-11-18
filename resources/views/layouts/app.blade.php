@@ -16,7 +16,7 @@
         <div class="row gx-0">
             <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Opening Hours: Mon - Tues : 6.00 am - 10.00 pm, Sunday Closed </small>
+                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Opening Hours: Mon - Tues : 09:00 am - 04:00 pm, Sat - 9:00 am - 5:00 pm, Sun - 9:00 am - 3:00 pm </small>
                 </div>
             </div>
             <div class="col-md-6 text-center text-lg-end">
@@ -25,7 +25,7 @@
                         <p class="m-0"><i class="fa fa-envelope-open me-2"></i>dentec@gmail.com</p>
                     </div>
                     <div class="py-2">
-                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+639123456789</p>
+                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>0933-811-1429, 0917-186-6575, (042) 660 4906</p>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                     <h3 class="text-white mb-4">Get In Touch</h3>
                     <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>Lucena City, Quezon</p>
                     <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>dentec@gmail.com</p>
-                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+6391234567890</p>
+                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>0933-811-1429, 0917-186-6575, (042) 660 4906</p>
                 </div>
                 <div class="col-3">
                     <h3 class="text-white mb-4">Follow Us</h3>
@@ -107,14 +107,14 @@
     <!-- Footer End -->
 
     @auth
+    <span class="d-none">{{$adminUser = App\Models\User::where('user_type', '1')->first()}}</span>
     <div class="chat-accordion accordion shadow-lg">
         <div class="accordion-item">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 <i class="fa fa-message"></i>
             </button>
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <span class="d-none">{{$adminUser = App\Models\User::where('user_type', '1')->first()}}</div>
-                <iframe src="{{ url('chatify/' . $adminUser?->id . '?source=iframe') }}" style="height: 400px;" />
+                <iframe src="{{ url('chatify/' . $adminUser?->id . '?source=iframe') }}" style="height: 400px;"></iframe>
             </div>
         </div>
     </div>

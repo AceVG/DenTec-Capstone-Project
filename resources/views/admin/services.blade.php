@@ -14,10 +14,10 @@
                         <th scope="col">Name</th>
                         <th scope="col">Duration (hours)</th>
                         <th scope="col">
-                            <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#create">
+                            <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#create" onclick="event.stopPropagation();">
                                 Create
                             </button>
-                            <div class="modal fade" id="create" tabindex="-1" aria-hidden="true">
+                            <div class="modal fade" id="create" tabindex="-1" aria-hidden="true" onclick="event.stopPropagation();">
                                 <div class="modal-dialog">
                                     <form class="modal-content" method="POST" action="{{ url('service') }}" enctype="multipart/form-data">
                                         @csrf

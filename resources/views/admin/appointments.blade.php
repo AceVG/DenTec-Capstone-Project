@@ -18,13 +18,15 @@
                         <th scope="col">Start</th>
                         <th scope="col">End</th>
                         <th scope="col">
-                            <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#create">
+                            <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#create" onclick="event.stopPropagation();">
                                 Create
                             </button>
-                            <div class="modal fade" id="create" tabindex="-1" aria-hidden="true">
+                            <div class="modal fade" id="create" tabindex="-1" aria-hidden="true" onclick="event.stopPropagation();">
                                 <div class="modal-dialog">
                                     <form class="modal-content" method="POST" action="{{ url('appointment') }}">
                                         @csrf
+                                        
+                                        <input type="hidden" id="start" name="start" />
 
                                         <div class="modal-header">
                                             <h5 class="modal-title">Create</h5>
@@ -44,7 +46,7 @@
                                             <label class="mt-2"  for="service_id">Select Service</label>
                                             <select id="service_id" name="service_id" class="form-select" required>
                                                 @foreach ($services as $service)
-                                                    <option value="{{$service->id}}">{{$service->name}} - {{$service->duration}} hours</option>
+                                                    <option value="{{$service->id}}">{{$service->name}}</option>
                                                 @endforeach
                                             </select>
                                             <x-input-error :messages="$errors->get('service_id')" class="text-error mt-2" />
@@ -57,9 +59,13 @@
                                             </select>
                                             <x-input-error :messages="$errors->get('dentist_id')" class="text-error mt-2" />
 
-                                            <label class="mt-2" for="start">Date</label>
-                                            <input class="form-control" type="datetime-local" id="start" name="start" />
-                                            <x-input-error :messages="$errors->get('start')" class="text-error mt-2" />
+                                            <label class="mt-2" for="date">Date</label>
+                                            <input class="form-control" type="date" id="date" name="date" required />
+                                            <x-input-error :messages="$errors->get('date')" class="text-error mt-2" />
+
+                                            <label class="mt-2" for="time">Time</label>
+                                            <select id="time" name="time" class="form-select" required disabled></select>
+                                            <x-input-error :messages="$errors->get('time')" class="text-error mt-2" />
 
                                             <label class="mt-2" for="notes">Notes</label>
                                             <textarea class="form-control" type="datetime-local" id="notes" name="notes" rows="3"></textarea>
@@ -109,7 +115,7 @@
 
                                                     @if (ctype_space($appointment->notes))
                                                     <label for="notes">Notes</label>
-                                                    <textarea id="notes" name="notes" type="text" class="form-control mb-2" value="{{$appointment->notes}}" rows="3" readonly></textarea>
+                                                    <textarea id="notes" name="notes" type="text" class="form-control mb-2" rows="3" readonly>{{$appointment->notes}}</textarea>
                                                     @endif
 
                                                     <label for="dentist_id">Select Dentist</label>
@@ -138,6 +144,11 @@
                                     </button>
                                     <x-appointment-modal :appointment="$appointment" :status="'Canceled'" :statusText="'Cancel'" />
                                     <x-appointment-modal :appointment="$appointment" :status="'Completed'" :statusText="'Complete'" />
+                                @else
+                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#view{{$appointment->id}}">
+                                        View
+                                    </button>
+                                    <x-appointment-modal :appointment="$appointment" :status="'View'" :statusText="'View'" />
                                 @endif
                             </td>
                         </tr>
@@ -148,4 +159,67 @@
     </div>
 </div>
 <!-- Table End -->
+
+<script>
+    (function () {
+        const services =  {!! json_encode($services) !!};
+        const serviceElement = document.getElementById("service_id");
+        const dateElement = document.getElementById("date");
+        const timeElement = document.getElementById("time");
+        const startElement = document.getElementById("start");
+
+        serviceElement.addEventListener("change", function () {
+            onChange(serviceElement.value, dateElement.value);
+        });
+        dateElement.addEventListener("change", function () {
+            onChange(serviceElement.value, dateElement.value);
+
+            timeElement.removeAttribute("disabled");
+        });
+        timeElement.addEventListener("change", function () {
+            timeChanged();
+        });
+
+        function onChange(serviceId, date) {
+            if (!serviceId || !date) return;
+
+            const service = services.find(x => x.id == serviceId);
+            const serviceDay = new Date(date).getDay();
+            const timeslots = [];
+
+            let hours = 7;
+            if (serviceDay === 0) { /*sunday*/
+                hours = 8;
+            } else if (serviceDay === 6) { /*saturday*/
+                hours = 6;
+            }
+
+            $(timeElement).empty();
+
+            let currentHour = 0;
+            for (let i = 0; i < Math.floor(hours / service.duration); i++)
+            {
+                currentHour = ((i + 1) * service.duration) + 9;
+
+                const start = currentHour - service.duration;
+                const end = currentHour;
+                $(timeElement).append($('<option>', {
+                    value: start,
+                    text: `${new Date(0, 0, 0, start).toLocaleTimeString([], {timeStyle: 'short'})} - ${new Date(0, 0, 0, end).toLocaleTimeString([], {timeStyle: 'short'})}`
+                }));
+            }
+
+            timeChanged();
+        }
+
+        function timeChanged() {
+            const date = dateElement.value;
+            const time = timeElement.value;
+            if (!date || !time) return;
+
+            const dateParsed = new Date(date);
+            startElement.value = new Date(Date.UTC(dateParsed.getFullYear(), dateParsed.getMonth(), dateParsed.getDate(), parseInt(time))).toISOString();
+        }
+    })()
+</script>
 @endsection

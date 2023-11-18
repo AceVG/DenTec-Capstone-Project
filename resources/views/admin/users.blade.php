@@ -21,10 +21,10 @@
                         <th scope="col">Medical History</th>
                         <th scope="col">Remarks</th>
                         <th scope="col">
-                            <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#create">
+                            <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#create" onclick="event.stopPropagation();">
                                 Create
                             </button>
-                            <div class="modal fade" id="create" tabindex="-1" aria-hidden="true">
+                            <div class="modal fade" id="create" tabindex="-1" aria-hidden="true" onclick="event.stopPropagation();">
                                 <div class="modal-dialog">
                                     <form class="modal-content" method="POST" action="{{ url('user') }}">
                                         @csrf
@@ -160,15 +160,15 @@
                                                     <x-input-error :messages="$errors->get('address')" class="text-error mt-2" />
 
                                                     <label class="mt-2" for="dental_history">Dental History</label>
-                                                    <textarea class="form-control" type="text" id="dental_history" name="dental_history" value="{{$user->dental_history}}" rows="3"></textarea>
+                                                    <textarea class="form-control" type="text" id="dental_history" name="dental_history" rows="3">{{$user->dental_history}}</textarea>
                                                     <x-input-error :messages="$errors->get('dental_history')" class="text-error mt-2" />
 
                                                     <label class="mt-2" for="medical_history">Medical History</label>
-                                                    <textarea class="form-control" type="text" id="medical_history" name="medical_history" value="{{$user->medical_history}}" rows="3"></textarea>
+                                                    <textarea class="form-control" type="text" id="medical_history" name="medical_history" rows="3">{{$user->medical_history}}</textarea>
                                                     <x-input-error :messages="$errors->get('medical_history')" class="text-error mt-2" />
 
                                                     <label class="mt-2" for="remarks">Remarks</label>
-                                                    <textarea class="form-control" type="text" id="remarks" name="remarks" value="{{$user->remarks}}" rows="3"></textarea>
+                                                    <textarea class="form-control" type="text" id="remarks" name="remarks" rows="3">{{$user->remarks}}</textarea>
                                                     <x-input-error :messages="$errors->get('remarks')" class="text-error mt-2" />
                                                 </div>
                                                 <div class="modal-footer">

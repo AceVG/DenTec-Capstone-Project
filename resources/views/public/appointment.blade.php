@@ -32,13 +32,15 @@
                         <h1 class="text-white mb-4">Make Appointment</h1>
                         <form method="POST" action="{{ url('appointment') }}">
                             @csrf
+
+                            <input type="hidden" id="start" name="start" />
         
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
                                     <label for="service_id">Service</label>
                                     <select id="service_id" name="service_id" class="form-select bg-light border-0" style="height: 55px;" required>
                                         @foreach ($services as $service)
-                                        <option value="{{$service->id}}">{{$service->name}} - {{$service->duration}} hours</option>
+                                        <option value="{{$service->id}}">{{$service->name}}</option>
                                         @endforeach
                                     </select>
                                     <x-input-error :messages="$errors->get('service_id')" class="text-error mt-2" />
@@ -70,10 +72,15 @@
                                     @endauth
                                     <x-input-error :messages="$errors->get('email')" class="text-error mt-2" />
                                 </div>
-                                <div class="col-12">
-                                    <label for="start">Date</label>
-                                    <input id="start" name="start" type="datetime-local" class="form-control bg-light border-0" style="height: 55px;" required>
-                                    <x-input-error :messages="$errors->get('start')" class="text-error mt-2" />
+                                <div class="col-12 col-sm-6">
+                                    <label for="date">Date</label>
+                                    <input id="date" name="date" type="date" class="form-control bg-light border-0" style="height: 55px;" required>
+                                    <x-input-error :messages="$errors->get('date')" class="text-error mt-2" />
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <label for="time">Time</label>
+                                    <select id="time" name="time" class="form-select bg-light border-0" style="height: 55px;" required disabled></select>
+                                    <x-input-error :messages="$errors->get('time')" class="text-error mt-2" />
                                 </div>
                                 <div class="col-12">
                                     <label for="notes">Notes</label>
@@ -104,13 +111,14 @@
                                 <th scope="col">Service</th>
                                 <th scope="col">Start</th>
                                 <th scope="col">End</th>
+                                <th scope="col">Reason</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if ($appointments->count() == 0)
                                 <tr>
-                                    <td class="text-center" colspan="5">No data to display</td>
+                                    <td class="text-center" colspan="6">No data to display</td>
                                 </tr>
                             @endif
                             
@@ -120,6 +128,7 @@
                                     <td>{{$appointment->service?->name}}</td>
                                     <td>{{$appointment->start}}</td>
                                     <td>{{$appointment->end}}</td>
+                                    <td>{{$appointment->reason}}</td>
                                     <td>
                                         @if ($appointment->status == 'Pending')
                                         <form method="POST" action="{{ url('appointment/update') }}">
@@ -180,4 +189,67 @@
             </div>
         </div>
     </div>
+
+    <script>
+        (function () {
+            const services =  {!! json_encode($services) !!};
+            const serviceElement = document.getElementById("service_id");
+            const dateElement = document.getElementById("date");
+            const timeElement = document.getElementById("time");
+            const startElement = document.getElementById("start");
+
+            serviceElement.addEventListener("change", function () {
+                onChange(serviceElement.value, dateElement.value);
+            });
+            dateElement.addEventListener("change", function () {
+                onChange(serviceElement.value, dateElement.value);
+
+                timeElement.removeAttribute("disabled");
+            });
+            timeElement.addEventListener("change", function () {
+                timeChanged();
+            });
+
+            function onChange(serviceId, date) {
+                if (!serviceId || !date) return;
+
+                const service = services.find(x => x.id == serviceId);
+                const serviceDay = new Date(date).getDay();
+                const timeslots = [];
+
+                let hours = 7;
+                if (serviceDay === 0) { /*sunday*/
+                    hours = 8;
+                } else if (serviceDay === 6) { /*saturday*/
+                    hours = 6;
+                }
+
+                $(timeElement).empty();
+
+                let currentHour = 0;
+                for (let i = 0; i < Math.floor(hours / service.duration); i++)
+                {
+                    currentHour = ((i + 1) * service.duration) + 9;
+
+                    const start = currentHour - service.duration;
+                    const end = currentHour;
+                    $(timeElement).append($('<option>', {
+                        value: start,
+                        text: `${new Date(0, 0, 0, start).toLocaleTimeString([], {timeStyle: 'short'})} - ${new Date(0, 0, 0, end).toLocaleTimeString([], {timeStyle: 'short'})}`
+                    }));
+                }
+
+                timeChanged();
+            }
+
+            function timeChanged() {
+                const date = dateElement.value;
+                const time = timeElement.value;
+                if (!date || !time) return;
+
+                const dateParsed = new Date(date);
+                startElement.value = new Date(Date.UTC(dateParsed.getFullYear(), dateParsed.getMonth(), dateParsed.getDate(), parseInt(time))).toISOString();
+            }
+        })()
+    </script>
 @endsection

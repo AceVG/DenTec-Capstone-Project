@@ -32,6 +32,7 @@ class AppointmentController extends Controller
             'email' => $request->email == null ? $user->email : $request->email,
             'phone' => $request->phone == null ? $user->phone : $request->phone,
             'notes' => $request->notes,
+            'reason' => $request->reason,
             'start' => $request->start,
             'end' => Carbon::parse($request->start)->addHours($service->duration),
             'status' => $request->status == null ? 'Pending' : $request->status,
@@ -48,6 +49,7 @@ class AppointmentController extends Controller
  
         $appointment->dentist_id = $request->dentist_id;
         $appointment->status = $request->status;
+        $appointment->reason = $request->reason;
         
         $appointment->save();
 
