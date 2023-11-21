@@ -31,21 +31,21 @@
                             <i class="bi bi-geo-alt fs-1 text-primary me-3"></i>
                             <div class="text-start">
                                 <h5 class="mb-0">Our Office</h5>
-                                <span>Lucena City, Quezon</span>
+                                <span>14 Allarey St., Barangay 1, Lucena, Philippines</span>
                             </div>
                         </div>
                         <div class="d-flex align-items-center mb-2">
                             <i class="bi bi-envelope-open fs-1 text-primary me-3"></i>
                             <div class="text-start">
                                 <h5 class="mb-0">Email Us</h5>
-                                <span>dentec@gmail.com</span>
+                                <span>clinic.cadadental@gmail.com</span>
                             </div>
                         </div>
                         <div class="d-flex align-items-center">
                             <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
                             <div class="text-start">
                                 <h5 class="mb-0">Call Us</h5>
-                                <span>0933-811-1429, 0917-186-6575, (042) 660 4906</span>
+                                <span>0933-811-1429 | 0917-186-6575 | (042) 660 4906</span>
                             </div>
                         </div>
                     </div>

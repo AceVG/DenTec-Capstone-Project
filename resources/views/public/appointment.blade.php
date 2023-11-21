@@ -23,8 +23,8 @@
             <div class="row gx-5">
                 <div class="col-lg-6 py-5">
                     <div class="py-5">
-                        <h1 class="display-5 text-white mb-4">We Are A Certified and Award Winning Dental Clinic You Can Trust</h1>
-                        <p class="text-white mb-0">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus sed et. Takimata takimata sanctus sed.</p>
+                        <<h1 class="display-5 text-white mb-4">Book Your Appointment Today for Exceptional Dental Care</h1>
+                        <p class="text-white mb-0">Ready to take the next step toward a healthier smile? Schedule your appointment at DenTec, your trusted partner for exceptional dental care. Our certified and award-winning clinic is dedicated to providing high-quality personalized services. Don't wait—book now and experience the excellence of our experienced team in a welcoming and comfortable environment.</p>
                     </div>
                 </div>
                 <div class="col-lg-6">

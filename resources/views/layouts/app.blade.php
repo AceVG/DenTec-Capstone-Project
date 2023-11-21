@@ -16,16 +16,16 @@
         <div class="row gx-0">
             <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center">
-                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Opening Hours: Mon - Tues : 09:00 am - 04:00 pm, Sat - 9:00 am - 5:00 pm, Sun - 9:00 am - 3:00 pm </small>
+                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Opening Hours: Mon - Fri : 09:00 am - 04:00 pm | Sat - 9:00 am - 5:00 pm | Sun - 9:00 am - 3:00 pm </small>
                 </div>
             </div>
             <div class="col-md-6 text-center text-lg-end">
                 <div class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
                     <div class="me-3 pe-3 border-end py-2">
-                        <p class="m-0"><i class="fa fa-envelope-open me-2"></i>dentec@gmail.com</p>
+                        <p class="m-0"><i class="fa fa-envelope-open me-2"></i>clinic.cadadental@gmail.com</p>
                     </div>
                     <div class="py-2">
-                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>0933-811-1429, 0917-186-6575, (042) 660 4906</p>
+                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>0933-811-1429 | 0917-186-6575 | (042) 660 4906</p>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
         <a href="/" class="navbar-brand p-0">
-            <h1 class="m-0 text-primary"><i class="fa fa-tooth me-2"></i>DenTec</h1>
+            <h1 class="m-0 text-primary"><i class="fa fa-tooth me-2"></i>Cada Dental Center | DenTec</h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -79,17 +79,16 @@
             <div class="row g-5 pt-4">
                 <div class="col-9">
                     <h3 class="text-white mb-4">Get In Touch</h3>
-                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>Lucena City, Quezon</p>
-                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>dentec@gmail.com</p>
-                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>0933-811-1429, 0917-186-6575, (042) 660 4906</p>
+                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>14 Allarey St., Barangay 1, Lucena, Philippines</p>
+                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>clinic.cadadental@gmail.com</p>
+                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>0933-811-1429 | 0917-186-6575 | (042) 660 4906</p>
                 </div>
                 <div class="col-3">
-                    <h3 class="text-white mb-4">Follow Us</h3>
+                    <h3 class="text-white mb-4">Visit our Facebook Page</h3>
                     <div class="d-flex">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.facebook.com/CadaDentalCenter" target="_blank">
+                    <i class="fab fa-facebook-f fw-normal"></i>
+                    </a>
                     </div>
                 </div>
             </div>
