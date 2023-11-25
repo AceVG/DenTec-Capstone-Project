@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <label for="date">Date</label>
-                                    <input id="date" name="date" type="date" class="form-control bg-light border-0" style="height: 55px;" required>
+                                    <input id="date" name="date" type="date" class="form-control bg-light border-0" style="height: 55px;" min="{{date('Y-m-d')}}" required>
                                     <x-input-error :messages="$errors->get('date')" class="text-error mt-2" />
                                 </div>
                                 <div class="col-12 col-sm-6">

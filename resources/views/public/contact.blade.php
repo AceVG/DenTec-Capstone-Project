@@ -50,12 +50,14 @@
                         </div>
                     </div>
                 </div>
+                @auth
                 <div class="col-xl-4 col-lg-6 wow slideInUp" data-wow-delay="0.3s">
                     <span class="d-none">{{$adminUser = App\Models\User::where('user_type', '1')->first()}}</span>
                     <iframe src="{{ url('chatify/' . $adminUser?->id . '?source=iframe') }}" 
                         frameborder="0" style="width: 100%; height: 100%;" allowfullscreen="" aria-hidden="false"
                         tabindex="0"></iframe>
                 </div>
+                @endauth
                 <div class="col-xl-4 col-lg-12 wow slideInUp" data-wow-delay="0.6s">
                     <iframe class="position-relative rounded w-100 h-100"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1936.1590231287296!2d121.61065157218654!3d13.939658807356167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd4b58cfdd54f1%3A0x283d01d155e04ece!2sCada%20Dental%20Clinic!5e0!3m2!1sen!2sph!4v1695832863725!5m2!1sen!2sph"
