@@ -92,7 +92,7 @@
                             <td>{{$appointment->end}}</td>
                             <td>
                                 <div class="d-flex align-center gap-2">
-                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#view{{$appointment->id}}">
+                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#view{{$appointment->id}}">
                                         View
                                     </button>
                                     <x-appointment-modal :appointment="$appointment" :status="'View'" :statusText="'View'" />
