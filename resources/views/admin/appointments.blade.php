@@ -60,7 +60,7 @@
                                             <x-input-error :messages="$errors->get('dentist_id')" class="text-error mt-2" />
 
                                             <label class="mt-2" for="date">Date</label>
-                                            <input class="form-control" type="date" id="date" name="date" required />
+                                            <input class="form-control" type="date" id="date" name="date" min="{{date('Y-m-d')}}" required />
                                             <x-input-error :messages="$errors->get('date')" class="text-error mt-2" />
 
                                             <label class="mt-2" for="time">Time</label>
@@ -91,8 +91,12 @@
                             <td>{{$appointment->start}}</td>
                             <td>{{$appointment->end}}</td>
                             <td>
-                                @if ($appointment->status == 'Pending')
                                 <div class="d-flex align-center gap-2">
+                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#view{{$appointment->id}}">
+                                        View
+                                    </button>
+                                    <x-appointment-modal :appointment="$appointment" :status="'View'" :statusText="'View'" />
+                                    @if ($appointment->status == 'Pending')
                                     <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#approve{{$appointment->id}}">
                                         Approve
                                     </button>
@@ -134,8 +138,7 @@
                                         </div>
                                     </div>
                                     <x-appointment-modal :appointment="$appointment" :status="'Denied'" :statusText="'Deny'" />
-                                </div>
-                                @elseif ($appointment->status == 'Approved')
+                                    @elseif ($appointment->status == 'Approved')
                                     <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#complete{{$appointment->id}}">
                                         Complete
                                     </button>
@@ -144,12 +147,8 @@
                                     </button>
                                     <x-appointment-modal :appointment="$appointment" :status="'Canceled'" :statusText="'Cancel'" />
                                     <x-appointment-modal :appointment="$appointment" :status="'Completed'" :statusText="'Complete'" />
-                                @else
-                                    <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#view{{$appointment->id}}">
-                                        View
-                                    </button>
-                                    <x-appointment-modal :appointment="$appointment" :status="'View'" :statusText="'View'" />
-                                @endif
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                     @endforeach

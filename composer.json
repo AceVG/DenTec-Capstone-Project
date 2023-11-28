@@ -10,6 +10,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "laravel/vapor-core": "^2.32",
         "munafio/chatify": "^1.6"
     },
     "require-dev": {
