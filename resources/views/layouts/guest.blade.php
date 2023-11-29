@@ -20,7 +20,9 @@
             <div style="position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </div>
-
+            <div class="fixed top-0 left-0 mt-4 ml-4">
+                <a href="{{ url('/') }}">Go to Main Page</a>
+            </div>
             <div class="w-full sm:max-w-md my-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg" style="z-index: 2;">
                 <h1 class="text-teal-500 text-center text-3xl mb-4"><i class="fa fa-tooth me-2"></i>DenTec</h1>
 

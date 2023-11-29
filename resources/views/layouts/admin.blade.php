@@ -19,7 +19,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="/admin" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-tooth me-2"></i>Dentec</h3>
+                    <h3 class="text-primary"><i class="fa fa-tooth me-2"></i>DenTec</h3>
                 </a>
                 <div class="navbar-nav w-100">
                     <a href="/admin" class="{{ (request()->is('admin') || request()->is('admin/appointments*')) ? 'nav-item nav-link active' : 'nav-item nav-link' }}"><i class="fa fa-th me-2"></i>Appointments</a>
@@ -70,7 +70,7 @@
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
                         <div class="col-12 text-center text-sm-start">
-                            &copy; <a href="/admin">Dentec</a>, All Right Reserved. 
+                            &copy; <a href="/admin">DenTec</a>, All Right Reserved. 
                         </div>
                     </div>
                 </div>
