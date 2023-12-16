@@ -63,6 +63,18 @@
             </nav>
             <!-- Navbar End -->
 
+            @if (session()->has('message'))
+            <!-- Hero Start -->
+            <div class="container-fluid p-0">
+                <div class="alert alert-success alert-dismissible fade show rounded-0 mb-0" role="alert">
+                    {{ session('message') }}
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            @endif
+
             @yield('content')
 
             <!-- Footer Start -->

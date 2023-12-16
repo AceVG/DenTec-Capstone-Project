@@ -42,12 +42,6 @@ Route::get('/contact', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/appointment', [AppointmentController::class, 'view']);
-    Route::post('/appointment', [AppointmentController::class, 'create']);
-    Route::post('/appointment/update', [AppointmentController::class, 'update']);
-
-    Route::post('/review', [ReviewController::class, 'create']);
-    Route::post('/review/update', [ReviewController::class, 'update']);
-    Route::post('/review/delete', [ReviewController::class, 'delete']);
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -72,6 +66,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::post('/appointment', [AppointmentController::class, 'create']);
+    Route::post('/appointment/update', [AppointmentController::class, 'update']);
+
+    Route::post('/review', [ReviewController::class, 'create']);
+    Route::post('/review/update', [ReviewController::class, 'update']);
+    Route::post('/review/delete', [ReviewController::class, 'delete']);
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

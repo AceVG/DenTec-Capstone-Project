@@ -17,9 +17,6 @@
                         <th scope="col">Birthdate</th>
                         <th scope="col">Sex</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Dental History</th>
-                        <th scope="col">Medical History</th>
-                        <th scope="col">Remarks</th>
                         <th scope="col">
                             <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#create" onclick="event.stopPropagation();">
                                 Create
@@ -107,13 +104,14 @@
                             <td>{{$user->birthdate}}</td>
                             <td>{{$user->sex == true ? 'Male' : 'Female'}}</td>
                             <td>{{$user->address}}</td>
-                            <td>{{$user->dental_history}}</td>
-                            <td>{{$user->medical_history}}</td>
-                            <td>{{$user->remarks}}</td>
                             <td>
                                 <div class="d-flex align-center gap-2">
                                     <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit{{$user->id}}">
                                         Edit
+                                    </button>
+
+                                    <button type="button" class="btn btn-sm btn-secondary" style="white-space: nowrap" data-bs-toggle="modal" data-bs-target="#edithistory{{$user->id}}">
+                                        Edit History
                                     </button>
 
                                     <div class="modal fade" id="edit{{$user->id}}" tabindex="-1" aria-hidden="true">
@@ -158,6 +156,25 @@
                                                     <label class="mt-2" for="address">Address</label>
                                                     <input class="form-control" type="text" id="address" name="address" value="{{$user->address}}" />
                                                     <x-input-error :messages="$errors->get('address')" class="text-error mt-2" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="edithistory{{$user->id}}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <form class="modal-content" method="POST" action="{{ url('user/update') }}">
+                                                @csrf
+
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Edit History</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <input type="hidden" name="id" value="{{$user->id}}" />
 
                                                     <label class="mt-2" for="dental_history">Dental History</label>
                                                     <textarea class="form-control" type="text" id="dental_history" name="dental_history" rows="3">{{$user->dental_history}}</textarea>

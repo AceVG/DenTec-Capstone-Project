@@ -12,6 +12,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Name</th>
+                        <th scope="col">Description</th>
                         <th scope="col">Duration (hours)</th>
                         <th scope="col">
                             <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#create" onclick="event.stopPropagation();">
@@ -30,6 +31,10 @@
                                             <label for="name">Name</label>
                                             <input class="form-control" type="text" id="name" name="name" required />
                                             <x-input-error :messages="$errors->get('name')" class="text-error mt-2" />
+
+                                            <label class="mt-2" for="description">Description</label>
+                                            <textarea class="form-control" type="text" id="description" name="description" rows="3"></textarea>
+                                            <x-input-error :messages="$errors->get('description')" class="text-error mt-2" />
 
                                             <label class="mt-2" for="duration">Duration (hours)</label>
                                             <input class="form-control" type="number" id="duration" name="duration" required />
@@ -55,6 +60,7 @@
                     @foreach ($services as $service)
                         <tr>
                             <td>{{$service->name}}</td>
+                            <td>{{$service->description}}</td>
                             <td>{{$service->duration}}</td>
                             <td>
                                 <div class="d-flex align-center gap-2">
@@ -80,6 +86,10 @@
                                                     <label for="name">Name</label>
                                                     <input class="form-control" type="text" id="name" name="name" value="{{$service->name}}" required />
                                                     <x-input-error :messages="$errors->get('name')" class="text-error mt-2" />
+
+                                                    <label class="mt-2" for="description">Description</label>
+                                                    <textarea class="form-control" type="text" id="description" name="description" rows="3">{{$service->description}}</textarea>
+                                                    <x-input-error :messages="$errors->get('description')" class="text-error mt-2" />
 
                                                     <label class="mt-2" for="duration">Duration (hours)</label>
                                                     <input class="form-control" type="number" id="duration" name="duration" value="{{$service->duration}}" required />

@@ -25,7 +25,7 @@ class AppointmentController extends Controller
 
     public function create(Request $request)
     {
-        $user = User::find($request->user_id == null ? Auth::id() : $request->user_id);
+        $user = User::find($request->user_id == null ? Auth::user()->user_type != '1' ? Auth::id() : null : $request->user_id);
         $service = Service::find($request->service_id);
         $appointment = Appointment::create([
             'name' => $request->name == null ? $user->name : $request->name,
@@ -36,7 +36,7 @@ class AppointmentController extends Controller
             'start' => $request->start,
             'end' => Carbon::parse($request->start)->addHours($service->duration),
             'status' => $request->status == null ? 'Pending' : $request->status,
-            'user_id' => $request->user_id == null ? Auth::id() : $request->user_id,
+            'user_id' => $request->user_id == null ? $user != null ? $user->id : null : $request->user_id,
             'service_id' => $request->service_id,
         ]);
 

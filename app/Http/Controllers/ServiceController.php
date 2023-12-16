@@ -22,6 +22,7 @@ class ServiceController extends Controller
 
         $service = Service::create([
             'name' => $request->name,
+            'description' => $request->description,
             'duration' => $request->duration,
             'photo' => 'services-images/' . $photoname,
         ]);
@@ -34,6 +35,7 @@ class ServiceController extends Controller
         $service = Service::find($request->id);
  
         $service->name = $request->name;
+        $service->description = $request->description;
         $service->duration = $request->duration;
 
         $photo = $request->file;

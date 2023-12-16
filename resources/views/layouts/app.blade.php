@@ -71,6 +71,15 @@
     </nav>
     <!-- Navbar End -->
     
+    @if (session()->has('message'))
+    <!-- Hero Start -->
+    <div class="container-fluid p-0">
+        <div class="alert alert-success rounded-0 mb-0 text-center" role="alert">
+            {{ session('message') }}
+        </div>
+    </div>
+    @endif
+
     @yield('content')
     
     <!-- Footer Start -->

@@ -34,6 +34,7 @@
                                 </div>
                                 <div class="position-relative bg-light rounded-bottom text-center p-4">
                                     <h5 class="m-0">{{$service->name}}</h5>
+                                    <h6 class="m-0">{{$service->description}}</h5>
                                 </div>
                             </div>
                         @endforeach

@@ -131,15 +131,10 @@
                                     <td>{{$appointment->reason}}</td>
                                     <td>
                                         @if ($appointment->status == 'Pending')
-                                        <form method="POST" action="{{ url('appointment/update') }}">
-                                            @csrf
-                                            
-                                            <input type="hidden" name="id" value="{{$appointment->id}}}" />
-                                            <input type="hidden" name="status" value="Cancelled" />
-                                            <button class="btn btn-sm btn-danger" type="submit">
-                                                Cancel
-                                            </button>
-                                        </form>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#cancel{{$appointment->id}}">
+                                            Cancel
+                                        </button>
+                                        <x-appointment-modal :appointment="$appointment" :status="'Canceled'" :statusText="'Cancel'" />
                                         @elseif ($appointment->status == 'Completed')
                                             <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#review{{$appointment->id}}">
                                                 Review
