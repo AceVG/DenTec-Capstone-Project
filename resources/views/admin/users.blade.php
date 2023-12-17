@@ -125,6 +125,9 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <input type="hidden" name="id" value="{{$user->id}}" />
+                                                    <input type="hidden" name="dental_history" value="{{$user->dental_history}}" />
+                                                    <input type="hidden" name="medical_history" value="{{$user->medical_history}}" />
+                                                    <input type="hidden" name="remarks" value="{{$user->remarks}}" />
 
                                                     <label for="email">Email</label>
                                                     <input class="form-control" type="text" id="email" name="email" value="{{$user->email}}" readonly />
@@ -175,6 +178,12 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <input type="hidden" name="id" value="{{$user->id}}" />
+                                                    <input type="hidden" name="email" value="{{$user->email}}" />
+                                                    <input type="hidden" name="name" value="{{$user->name}}" />
+                                                    <input type="hidden" name="phone" value="{{$user->phone}}" />
+                                                    <input type="hidden" name="birthdate" value="{{$user->birthdate}}" />
+                                                    <input type="hidden" name="sex" value="{{$user->sex}}" />
+                                                    <input type="hidden" name="address" value="{{$user->address}}" />
 
                                                     <label class="mt-2" for="dental_history">Dental History</label>
                                                     <textarea class="form-control" type="text" id="dental_history" name="dental_history" rows="3">{{$user->dental_history}}</textarea>
