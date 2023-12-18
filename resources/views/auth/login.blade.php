@@ -20,6 +20,9 @@
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
+        
+        <!-- Google Recaptcha -->
+        <div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}}></div>
 
         <div class="flex items-center justify-between block mt-4">
             @if (Route::has('password.request'))
